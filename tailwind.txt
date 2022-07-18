@@ -1,0 +1,62 @@
+npm init -y
+npm install tailwindcss postcss postcss-cli autoprefixer
+npx tailwindcss init -p
+
+package.json file script build link tailwind.css from src to style.css public
+
+--------------------------------------------------
+
+latest without node module
+---------------------------------------------
+
+npx tailwindcss -o styles.css
+
+npx tailwindcss -o styles.css --jit --purge './**/*.html'
+
+npx tailwindcss -o styles.css --jit --purge './**/*.html' --watch
+
+npx tailwindcss -i tailwind.css -o styles.css
+
+
+npx tailwindcss init
+
+---------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

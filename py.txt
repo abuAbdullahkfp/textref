@@ -1,0 +1,714 @@
+html 
+css
+(bootstrap, tailwind css)
+javascript (React, Redux, Next.js, material Ui, tailwind Ui)
+MongoDb, postgres
+python (django, Rest api, jwt , django channels and websockets, django packages, django celery)
+Docker, kubernetes
+git and github
+Aws
+React Native
+---------------------------------------------
+AUTH_USER_MODEL = 'customer.User'
+
+verbose_name_plural
+
+STATIC_ROOT = 'static_root'
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+django forms 
+
+form.name.id_for_label
+form.name.label_tag
+form.name.value
+form.data
+form.name.data
+form.email.data
+form.name.html_name
+form.order_fields(field_order ={....})
+form.name.help_text
+
+{% forms in form.visible_fields %}
+{% forms in form.hidden_fields %}
+
+form field argument
+auto_id = 
+required ,-the default is true
+labels :- change label title
+label_suffix - label suffix
+initial :- Set initial value
+disabled if set true no edit (field cannot be edited)
+help_text :- gives text below field( write your password)
+error_messages, dictionary forms.CharField(error={'required': 'enter the name'}
+validators 
+localize
+widget
+
+built in fields and validation (charfield , bool, int) forms validation
+
+name = forms.Charfield(min_length=5, min_length=4, error_messages={'required':'Enter your name in bold'}, strip= 'False'(by default its true)', empty_value="afrid")
+
+roll = forms.IntegerField(min_value=5, max_value=40)
+
+price = forms.DecimalField(min_value=5, max_value=40, max_digits=4, decimal_places=1)
+
+built in validators can also be accessed as 
+from django.core import validators
+validators = [validators.MaxLengthValaidators(10)]
+
+custom validators 
+def start_with_s(value):
+    if value[0] != 's':
+       raise forms.ValidationError('must start with s ')
+
+name = forms.CharField(validators=[starts_with_s])
+
+{{form.errors | striptags}}
+
+title.widget.attrs.update({'class': 'form-control'})
+
+model form 
+model = User
+fields = ['name', 'password', 'email']
+labels = {'name':'Enter Name, 'password':'enter password'}
+help_text = {'name':{'required':enter your name'},
+error_messages = {'name':{'required':'name is required'}, 'password':{'required': 'password is required'}}
+
+
+
+
+class Year:
+    regex = '[0-9]{4}'
+
+    def to_python(self,value):
+        return int(value)
+
+    def to_url(self, value):
+        return f'{value:4d}'
+
+
+from django.urls import path, register_converter
+from . import views, converters
+register_converter(converters.Year, 'yyyy')
+path("<yyyy:year>", views.landing, name='landing')
+def landing(request, year):
+
+
+
+Messages framework 
+
+{% if messages %}
+{% for message in messages %}
+{% if message.tags %}{{message.tags}}{% endif %}
+{{message}}
+{% endfor %}
+{% endif %}
+
+from django.contrib.messages import constants
+MESSAGE_TAGS = {constants.ERROR: 'danger'}
+
+user = form.save()
+group = Group.objects.get(name="...")
+user.groups.add(group)
+
+if perms.app.delete_model 
+
+
+@login_required()
+@staff_member_required()
+
+
+
+crispy form 
+
+pip install django-crispy-forms
+
+go to settings and add crispy to installed apps
+'crispy_forms'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+{% load crispy_forms_tags %}
+
+{{form | crispy}}
+
+virtualenv
+
+pip install virtualenvwrapper-win
+mkvirtualenv (envname)
+workon envname 
+lsvirtualenv -b 
+
+uninstall
+workon env
+pip uninstall django
+rmvirtual envname
+pip uninstall virtualenvwrapper-win
+
+
+COOKIES
+.set_cookie(key,value,....)
+
+request.COOKIES[''] or request.COOKIES.get('', default value(param))
+
+.delete_cookie('key')
+
+
+Qurery set
+------------------------
+Methods that return new queryset
+all()
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_REDIRECT_URL = ''
+
+Media configuration
+
+main urls
+from django.conf.urls.static import static
+from django.conf import settings
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+settings files 
+
+MEDIA_URL = '/images/'
+MEDIA_ROOT = BASE_DIR/ 'static/images'
+
+----------------------------------------------------------------------------------------------------
+View
+
+methods 
+
+setup(self, request, *args, **kwargs)
+
+dispatch(self, request, *args, **kwargs)
+
+get(self, request)
+
+post(self, request)
+----------------------------------------------------------------------------------------------------
+Template view
+
+template_name=
+template_engine=
+extra_context =
+
+methods 
+
+get_context_data(self, **kwargs)
+----------------------------------------------------------------------------------------------------
+RedirectView
+
+url=
+pattern_name=
+permanent=
+query_string=
+
+methods
+
+get_redirect_url(*args, **kwargs)
+
+
+----------------------------------------------------------------------------------------------------
+ListView
+
+template_name_suffix=
+allow_empty=
+model=
+template_name=
+queryset=
+ordering=
+
+method
+
+get_template_names()
+get(request, *args, **kwargs)
+get_queryset()
+get_ordering()
+get_context_object_name(object_list)
+get_context_data(self, *args, **kwargs)
+----------------------------------------------------------------------------------------------------
+DetailView
+
+model=
+template_name=
+context_object_name=
+pk_url_kwarg = 'id'
+slug_url_kwarg =
+
+----------------------------------------------------------------------------------------------------
+LoginView
+
+template_name=
+redirect_field_name=
+custom form (authentication_form=)
+extra_context=
+redirect_authenticated_user=
+success_url_allowed=
+----------------------------------------------------------------------------------------------------
+LogoutView
+
+next_page
+template_name
+---------------------------------------------------------------------------------------------------
+Paginator function based view
+from django.core.paginator import Paginator
+
+post = Post.objects.all().order_by('id')
+paginator = Paginator(post, per_page=3, orphans=1)
+page_number = request.GET.get('page')
+page_obj = paginator.get_page(page_number)
+
+return render(request, 'tempalte.html', {'page_obj':page_obj)
+
+{% if page_obj.has_previous %}
+<a href="?page={{page_obj.previous_page_number}}">Previous</a>
+{% endif %}
+
+<span>Page {{page_obj.number}} of {{page_obj.paginator.num_pages}} </span>
+
+{% if page_obj.has_next %}
+<a href="?page={{page_obj.next_page_number}}">Next</a>
+{% endif %}
+
+----------------------------------------------------------------------------------------------------
+Pagination class based view
+
+ListView
+
+model = Post
+template_name=
+ordering = ['id']
+paginate_by = 3
+paginate_orphans = 1
+
+def get_context_data(self, *args, **kwargs):
+try:
+return super().get_context_data(*args, **kwargs)
+except Http404:
+self.kwargs['page'] = 1
+return super().get_context_data(*args, **kwargs)
+
+
+or
+
+def paginate_queryset(self, queryset, page_size):
+try:
+return super().paginate_queryset(queryset, page_size)
+except Http404:
+self.kwargs['page'] = 1
+return super().get_context_data(queryset, page_size)
+----------------------------------------------------------------------------------------------------signals
+from django.contrib.auth.signals import ....
+from django.dispatch import receiver
+
+@receiver(signalname, sender='..')
+def functionname(sender, request, user, **kwargs, created, instance, credentials):
+
+instead of receiver decorator
+signalname.connect(functionname, sender=''')
+
+default_app_config
+def ready(self):
+  import startappname.signals (if you have created a signal file)
+
+
+user_logged_in(sender, user, request, **kwargs)
+user_logged_out(sender, user, request, **kwargs)
+user_login_failed(sender,credentials, request,**kwargs)
+pre_init(sender, args, kwargs)
+post_init(sender, instance)
+pre_save(sender, instance, raw, using ,update_fields)
+post_save(sender, instance, created, raw, using, update_fields)
+pre_delete(sender, instance, using)
+post_delete(sender, instance, using)
+request_started(sender, environ)
+request_finished(sender)
+got_request_exception(sender, request)
+
+----------------------------------------------------------------------------------------------------
+sending email
+
+from django.core.mail import send_mail
+form_valid method
+send_mail(
+            subject='customer has been created',
+            message='click the link and see',
+            from_email='afrid@gmail.com',
+            recipient_list=['tosomeone@gmail.com']
+        )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+inlineformset_factory(Parent, Child, fields=[], can_delete=True(default)False, extra=, max_num=) 
+
+
+python -m venv venv
+
+venv\Scripts\acitvate
+
+punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+
+
+@property
+def imageurl(self):
+    try:
+        url = self.image.url
+    except:
+        url = ''
+    return url
+
+enctype="multipart/form-data"
+
+
+
+class Meta:
+    verbose_name_plural = 'Article'
+
+LOGIN_REDIRECT_URL
+LOGIN_URL
+--------------------------------------------------------------------------------------------------------
+
+import pdfkit
+from django.http import HttpResponse
+from django.template import loader
+import io
+
+def get(self, *args, **kwargs):
+    self.object = self.get_object(queryset=self.queryset)
+    template = loader.get_template(self.template_name)
+    html = template.render({'profile': self.object})
+    options = {
+      'page-size': 'Letter',
+      'encoding': 'UTF-8',
+    }
+    pdf = pdfkit.from_string(html, False, options)
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment'
+    filename = 'resume.pdf'
+    return response
+--------------------------------------------------
+
+pip install django-mptt
+from mptt.models import MPTTModel, TreeForeignKey
+write mptt in the settings
+
+parent = TreeForeignKey('self', on_delete=models.CASCADE, related_name='children')
+
+class MPTTMeta:
+   order_insertion_by = (anyfield)
+
+from mptt.admin import MPTTModelAdmin
+admin.site.register(Comments, MPTTModelAdmin)
+
+{% load mptt_tags %}
+
+{% recursetree comments %}
+   {{node.content}}
+   {% if not node.is_leaf_not %}
+   {{children}}
+   {% endif %}
+{% endrecursetree %}
+
+from mptt.forms import TreeNodeChoiceField
+parent = TreeNodeChoiceField(queryset=Comments.objects.all())
+
+class NewCommentForm(forms.ModelForm):
+    parent = TreeNodeChoiceField(queryset=Comments.objects.all())
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields.get('parent').required = False
+        self.fields.get('parent').label = ''
+        self.fields.get('parent').widget.attrs.update({
+             'option':'{{node.id}}'
+        })
+
+    class Meta:
+        model = Comments
+        fields = ['name', 'parent', 'email', 'content']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'col-sm-12'}),
+            'email': forms.TextInput(attrs={'class': 'col-sm-12'}),
+            'content': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+--------------------------------------------------
+import uuid
+
+  def save(self, *args, **kwargs):
+    if self.code == "":
+      self.code = str(uuid.uuid4()).replace('-','').upper()[:10]
+    return super().save(*args, **kwargs)
+
+
+def save(self, *args, **kwargs):
+    ex = False
+    if self.first_name and self.last_name:
+      to_slug = slugify(f'{str(self.first_name)}{str(self.last_name)}')
+      ex = Profile.objects.filter(slug=to_slug).exists()
+      while ex:
+        to_slug = slugify(f'{to_slug}{str(get_random_code())}')
+        ex = Profile.objects.filter(slug=to_slug).exists()
+    else:
+      to_slug = str(self.user)  
+    self.slug = to_slug
+    super().save(*args, **kwargs)
+--------------------------------------------------
+from django.utils.text import slugify
+from django.template.defaultfilters import slugify
+
+
+def save(self, *args, **kwargs):
+    self.slug = slugify(self.text)
+    super().save(*args, **kwargs)
+
+
+--------------------------------------------------
+
+
+--------------------------------------------------
+cookies
+--------
+create cookies
+----------------------
+max_age = 60 *60*24* 2// 2days
+expires = datetime.utcnow() + timedelta(dats=2)
+httponly = True
+
+set_cookie('key', 'value', max_age='',) 
+ 
+set_cookie('name', 'afrid', expires='',)
+
+set_cookie('name', 'afrid', 'dir')
+
+set_cookie('name', 'afrid', domail='example.com')
+
+set_cookie('name', 'afrid', max_age='', path='/', domail='example.com', secure=True)
+
+
+get cookie
+-----------
+
+request.COOKIES['key']
+request.COOKIES.get('key')
+--------------------------------------------------
+
+Django Sessions 
+-------------------------
+
+by default its two weeks.
+
+should set it in seconds 
+
+SESSION_COOKIE_AGE = 120 - 2min
+
+session is a dictionary
+
+set session
+-------------
+
+request.session['key'] = 'value'
+
+get session
+-----------
+
+request.session.get('key')
+
+
+delete session
+-----------------
+
+del request.session['key']
+
+------------------------
+
+items()
+keys()
+values()
+clear()
+setdefault('key', 'value') either returns the exiting key if not , then sets the key and value
+flush() // delete and end session
+get_session_cookie_age() 
+set_expiry(value) // value=300 will expire in 5min if 0 user session will expire when browser is closed
+get_expiry_date()
+get_expire_at_browser_close()
+clear_expired()
+request.session.modified = True
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+SESSION_FILE_PATH = os.path.join(BASE_DIR, 'session')
+for working with file based sessions
+----------------------------------------------
+Cache gs78
+-------------------
+
+per_site_cache
+-------------------
+
+'django.middleware.cache.UpdateCacheMiddelware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+
+
+CACHE_MIDDLEWARE_ALIAS =
+CACHE_MIDDLEWARE_SECONDS = 
+CACHE_MIDDLEWARE_KEY_PREFIX = 
+
+CACHES = {
+  'default': {
+      'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+      'LOCATION': 'whatever_name',
+      'TIMEOUT'	: ,
+      'OPTION' :{
+         'MAX_ENTRIES': ,
+}
+}
+}
+------------------------------------
+python manage.py createcachetable
+------------------------------------
+file based cache
+-----------------
+
+CACHES = {
+
+  'default': {
+      'BACKEND': 'django.core.cache.backends.filebased.FileBaseCache',
+       'LOCATION': 'c:/Django code/gs80', //file directory
+
+}
+}
+------------------------------
+local memory
+-------------------
+
+CACHES = {
+  'default': {
+     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    'LOCATION': 'unique-snowflake',
+}
+}
+
+per view caching
+------------------
+
+from django.views.decorators.cache import cache_page
+
+@cache_page()
+def home(request):
+and also inside the url cache_page()(view.something)
+
+-------------------------------------------
+
+Template Fragment Caching
+---------------------------
+
+{% load cache %}
+{% cache %}
+{% cache timeout name variable using='' %}...{% endcache name  %}
+
+example
+
+{% cache 30 course %}
+h1
+p
+{% endcache course %}
+-------------------------------
+low level cache api
+---------------------
+from django.core.cache import cache
+
+cache.set(key, value, timeout=DEFAUTL_TIMEOUT, version = None)
+
+cache.get(key, default=None, version=None)
+
+cache.add()
+
+cache.get_or_set()
+
+cache.set_many(dict, 20sec)
+----------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

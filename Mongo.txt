@@ -1,0 +1,155 @@
+use shop
+
+db.products.insertOne({}) // (data, options)
+
+db.products.insertMany([{}]) //  (data, options)
+
+db.products.find().pretty() // find(filter, options)
+
+db.products.findOne() // find(filter, options)
+
+updateOne(filter, data, options)
+updateMany(filter, data, options)
+replaceOne(filter, data, options)
+
+deleteOne(filter, options)
+deleteMany(filter, options)
+
+---------------------------------------------
+
+mongoose
+
+mongoose.Schema.Types.ObjectId
+
+const collections = await mongoose.connection.db.collections();
+
+  for (let collection of collections) {
+    await collection.deleteMany({});
+  }
+
+
+await mongoose.connection.collections.users.drop() // you know what happened
+
+---------------------
+-------------------------------
+
+User.find({}) return a [array] of all users
+User.find({name: "something"}) return a [array] of all users with name something
+User.findOne({name: "something"}) return a single user with name something (first user it can find from the collection)
+-------------------------------------------
+--------------------------------------------
+new User({data})
+await User.save()
+
+or
+
+await User.create({data})
+-------------------------------------------------
+------------------------------------------
+// deleting a instance 
+   const instance = await User.findOne({data})
+	await instance.delete()
+
+// Remove a bunch of records with some given criteria
+    await User.deleteMany({name: 'del'})
+
+findOneAndDelete() returns the deleted document after having deleted it (in case you need its contents after the delete operation); it will get the first record from the array of collection
+
+deleteOne() is used to delete a single document
+remove() is a deprecated function and has been replaced by deleteOne() (to delete a single document) and deleteMany() (to delete multiple documents)
+
+await User.fingOneAndDelete()
+await User.findByIdAndDelete()
+------------------------------
+------------------------------
+
+The findOneAndUpdate searches the document and updates just the entries in the given update document. The other entries in the found document will remain.
+
+The findOneAndReplace searches the document, removes everything inside this document and sets the entries of the given replacement document.
+
+For example: You have a document {"name":"James", "age":"21"}
+
+If you use the findOneAndUpdate function with the update document {"age":"22"}, you will get the document {"name":"James", "age":"22"}
+
+If you use the findOneAndReplace function with the replacement document {"age":"22"}, you will get the document {"age":"22"} (The name has been deleted)
+--------------------------------
+--------------------------------
+
+instance type using set n save updating
+ updUser.set('name', 'somethingelse')
+ await updUser.save()
+
+instance update identical to set n save watch epi 36 
+  updUser.update({name: "soemthing"})
+
+User.findByIdAndUpdate({}, {})
+User.findOneAndUpdate({}, {})
+User.updateMany({}, {})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

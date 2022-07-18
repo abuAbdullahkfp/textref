@@ -1,0 +1,75 @@
+git config --global user.name 'Mohammed Afrid'
+
+git config --global user.email afrid37@gmail.com
+
+git log // check every commit, branch on etc
+git status // check status of the git repo
+
+git add file1 file2 // adding to staging area
+git add . // adding all to staging area
+
+git commit -m "message" // commiting the code to repo
+git commit -a -m "message" / git commit -am "message" // adding and commiting the code to the repo
+
+git log --abbrev-commit 
+git log --oneline
+git log --stat
+
+git commit --amend // editing message or adding something to the previous commit
+
+git branch // list out all branches
+git branch -v  // shows branch, sha number and commit message
+git branch branch-name // create a new branch, wont switch to the newly created branch
+git switch branch-name // switch to any branch
+git checkout branch-name // switch to any branch
+git switch -c branch-name // create and switch to the new branch
+
+git branch -d deleteme // delete the branch, cant to that if your on the branch and deleting 
+git branch -D deletemebyforce // delete by force
+
+git branch -m renamebranch // rename the branch
+
+git merge branchname // merge branches
+
+git diff
+git diff HEAD
+git diff HEAD filename
+git diff --staged filename / git diff --cached
+git diff commit1..commit
+git diff branch..branch
+git diff HEAD HEAD~1
+
+git stash / git stash save // when you dont commit in feature branch and then move on to master branch
+git stash pop // removed from the stash when applied to any branch
+git stash apply // not removed from the stash after applied to any branch
+git stash list // list the stash stack
+git stash apply stash@{1} // apply a particular code from stash stack
+git stash drop stash@{1} // remove a particular code from stash stack
+
+git checkout commithash // will take to that commit back in time with detached head mode
+git checkout HEAD~1 // will take to a particular commit back in time in detached head mode
+git switch -  
+git checkout HEAD filename / git checkout -- filename
+git restore filename // restore the file content to last commit content 
+git restore --source HEAD~2 filename // restore to the commit content ((Head~2)
+git restore --staged filename // unstage a file from stage area
+
+git reset commithash / HEAD~1 // removes the commits , without removing the changes in working space
+git reset --hard commithash / HEAD~1 // removes the commits , with removing the changes
+git revert commithash/ HEAD~1 // does the same job of reset , but makes a new commit undoing the changes
+
+git fetch remote
+git fetch remote branch 
+
+git pull remote
+git fetch remote branch
+
+
+
+
+
+
+
+
+
+

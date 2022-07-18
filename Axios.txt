@@ -1,0 +1,26 @@
+npm install axios
+yarn add axios
+
+--------------------------------------------------
+axios(config)
+
+
+config = {
+   method: 'method',
+   url: 'url',
+   baseURL: '',
+   headers: {},
+   params: {},
+   data: {},
+   responseType: 'json',
+ }
+
+axios(config)
+
+-------------------------------------------------
+
+axios.defaults.baseURL = 'https://api.example.com';
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+--------------------------------------------------

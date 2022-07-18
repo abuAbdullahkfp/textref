@@ -1,0 +1,43 @@
+1. basics 
+   -variables, data types , conditional statements, and for-loops
+
+2. Iterables
+   -lists and tuples
+   - querysets
+
+3. Dictionaries
+   - methods like update(), and pop()
+
+4. Functions
+   - *args and **kwargs
+
+5. Decorators
+
+6. oops
+   super()
+
+7. packages
+----------------------------------------------------------------------------------------------------
+
+images , static , media 
+
+forms both normal and model with validations, widget, error messages 
+
+messages 
+
+models , inheritance , relations, orm 
+
+cookies, sessions, cache, signals 
+
+auth permissions , groups 
+
+whole register and login system using function and class
+
+pagination 
+
+class based views 
+
+this month
+------------------------------------------------------------------------------------------------------
+
+

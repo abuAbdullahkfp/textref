@@ -1,0 +1,108 @@
+const express = require('express');
+
+const path = require('path');
+
+const app = express();
+
+const PORT = process.env.PORT || 3000
+
+app.use(express.static('public'));
+
+app.listen(PORT,()=>{console.log("Listening on port "+PORT)})
+
+
+const path = require('path')
+
+response.send()
+
+app.get('/', (request, response)=>{
+   response.sendFile(path.resolve(__dirname) + '/index.html');
+})
+
+template engine
+npm i ejs
+app.set('view engine', 'ejs')
+
+if you want to change views folder name to templates
+app.set('views', path.resolve(__dirname) + '/templates')
+
+npm i dotenv
+make config folder index.js and import dotenv from dotenv
+---------------------------------------------
+rest api
+--------
+npm init -y // for package.json
+npm -i esm
+npm -i nodemon -D
+npm i joi
+
+checklist 
+
+validata the request
+authorise the request
+check if the user in the db
+prepare model
+store in db
+generate jwt token
+send response
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

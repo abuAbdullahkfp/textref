@@ -1,0 +1,273 @@
+way of declaring an object 
+
+object literal
+--------------
+
+var mobile = {};
+mobile['model'] = 'samsung';
+mobile.model = 'samsung;
+
+object literal declare and initial
+-----------------------------------
+
+var mobile = new Object();
+mobile['model'] = 'samsung';
+mobile.model = 'samsung;
+
+factory function a function which returns an object = {};
+-------------------------------------
+function mobile(){
+       return { model: 'samsung' };
+}
+
+var samsung = mobile();
+
+constructor function
+-----------------------------------------
+function Mobile(){ 
+      this.model = 'samsung';
+}
+
+var samsung = new Mobile();
+-------------------------------------------
+for (var keys in object_name){
+     if (typeof object_name[keys] !== 'function'){
+       document.write(object_name[keys]);
+
+}else{
+    document.write(object_name[keys]());
+
+}
+
+}
+----------------------------------------------
+if (typeof samsung['model'] !== 'undefined'){
+  document.write('its there');
+}else{
+  document.write('its not there');
+}
+
+if ('model' in samsung){
+  document.write('true');
+}else{
+  document.write('false');
+}
+
+if (samsung.hasOwnProperty('model')){
+  document.write('true');
+}else{
+  document.write('false');
+}
+
+--------------------------------------------------
+
+for (var keys in samsung){
+  if (typeof samsung[keys] !== 'function'){
+    document.write(samsung[keys]);
+  }else{
+    document.write(samsung[keys]()); //calling the function
+  }
+}
+--------------------------------------------------
+Different Types of Functions
+-----------------------------
+
+var show = function disp(){
+  document.write('hello world');
+}
+show();
+
+var show = function(){
+  document.write('anonymous function');
+}
+show();
+
+(function(){document.write('self ivoked function')}());
+
+--------------------------------------------------
+a = ['fdskl', 'fkdsj', 3, 4, true];
+
+
+for (let i=0; i<a.length; i++){
+  document.write(a[i], '<br>');
+}
+
+a.forEach((element, index, array) => {
+  document.write(element, '<br>');
+});
+
+
+for (let value of a){
+  document.write(value, '<br>');
+}
+
+-----------------------------------------------------------------------------------------
+var extend = (target, ...args)=>{
+ return Object.assign(target.prototype, ...args);
+}
+
+
+
+var eating = {
+  eat : ()=>{
+    return 'i can eat' ;
+  }
+};
+
+var talking = {
+  talk : ()=>{
+    return 'i can talk' ;
+  }
+};
+
+var walking= {
+  walk : ()=>{
+    return 'i can walk' ;
+  }
+};
+
+var start = {
+  on : ()=>{
+    return 'Started' ;
+  }
+};
+
+var stop = {
+  off : ()=>{
+    return 'Switched off' ;
+  }
+};
+
+var Human = function(){
+
+}
+
+var Robot = function(){
+
+}
+
+
+extend(Human, walking, eating, talking);
+extend(Robot, walking, talking, start, stop);
+
+var afrid = new Human();
+
+document.write(afrid.eat());
+
+var robot = new Robot();
+
+document.write(robot.on(), '<br>');
+document.write(robot.off(), '<br>');
+
+
+--------------------------------------------------
+
+array methods
+---------------
+
+new_array = old_array.concat(value1, value2)
+
+new_array = old_array.join('/ , or and')
+
+array_name.reverse()
+
+slice()
+
+Array.isArray()
+
+fill()
+
+splice()
+
+unshift()
+
+push()
+
+shift()
+
+pop()
+
+------------------------------------------------------------------------------------------string
+
+str.charAt(0);
+str.length;
+str.charCodeAt(0);
+new_str = str.concat(value, str2);
+
+str.toUpperCase()
+str.toLowerCase()
+
+str.trim() remove whitespace from starting and ending
+
+str.replace()
+
+str.split()
+
+str.indexOf()
+
+str.search()
+
+form
+substr(0, 10) cant enter morethan 10 in a form field
+----------------------------------------------------
+css selector
+
+> child
+~ sibling
++ adjacent
+* universal
+[]attribure selector
+[class=""]
+[id=""]
+
+
+div > h1
+
+h1 ~ p
+
+.main h1 + P
+
+*{
+}
+
+div[class]{}
+div[id='']{}
+
+[class ~= '']
+[class |= '']
+[class ^= '']
+[class $= '']
+[class *= '']
+---------------------------------------------
+let x = Math.floor((Math.random() * 8));
+let x = Math.floor((Math.random() * array.length));
+---------------------------------------------
+npm install loadash
+
+import {compose, pipe} from 'loadash/fp';
+
+---------------------------------------------
+
+window.scrollTo({
+                    top: document.documentElement.scrollHeight,
+                    behavior: "smooth"
+                  })
+
+
+---------------------------------------------
+new RegExp('^[a-zA-Z0-9]{3,30}$')
+
+
+ /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        "Please add a valid email",
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,119 @@
+--------------------------------------------------
+fetch("http://127.0.0.1:8000/api/articles/", {
+      method: "GET", or POST...
+      headers: {
+        "Accept": 'application/json',
+        "Content-Type": "application/json",
+        Authorization: "Token f5443c23113c605b5db57636741643143bdd8855",
+      },
+        body: body,
+        cache: 'default',
+    })
+--------------------------------------------------
+
+Methods 
+--------
+Body.array.Buffer()
+Body.blob()
+Body.form.Data()
+Body.json()
+Body.text()
+--------------------------------------------------
+
+const obj = fetch("http://127.0.0.1:8000/aapi/articles/", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Token f5443c23113c605b5db57636741643143bdd8855",
+        },
+      })
+      obj.then((response)=> {console.log(response); console.log(response.type); if(response.status == 404){
+        throw Error(response.statusText)
+      } return response.json()})
+         .then((data)=>console.log(data))
+         .catch((error)=>console.log(error))
+
+--------------------------------------------------
+django-cors-headers
+
+pip install django-cors-headers
+
+installed apps= 'corsheaders'
+
+add above common middleware
+
+'corsheaders.middleware.CorsMiddleware',
+    this above this
+    'django.middleware.common.CommonMiddleware',
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000"  # this is the url react one not django one
+]
+
+
+--------------------------------------------------
+encodeURIComponent()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

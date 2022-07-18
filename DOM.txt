@@ -1,0 +1,146 @@
+Element Access Methods
+---------------------------------------------
+getElementById();
+getElementsByClassName();
+getElementsByTagName();
+
+querySelector();
+querySelectorAll();
+
+---------------------------------------------
+Node and ElementNode
+
+parentNode , parentElement
+childNodes , children
+firstChild, firstElementChild
+lastChild, lastElementChild
+previousSibling, previousElementSibling
+nextSibling, nextElementSibling
+---------------------------------------------
+
+appendChild()
+insertBefore()
+insertAdjacentElement("position", element)
+insertAdjacentHTML()
+insertAdjacentText()
+
+---------------------------------------------
+
+cloneNode(true, false)
+removeChild()
+replaceChild()
+
+---------------------------------------------
+Modifying Text Nodes
+---------------------
+
+properties = Data, Length
+
+Methods
+--------
+
+appendData(String)
+deleteData(start, length)
+insertData(start, string)
+replaceData(start, length, string)
+splitText(start)
+substringData(start, length)
+------------------------------------------
+Attributes and Property
+--------------------------
+
+<p id='one' title='one' class='one'>this is one</p>
+
+let a = document.getElementById('one');
+    a.className = 'someone' ;
+    a.attributes[0].value = 'afrid';
+    a.attributes['title']
+    console.log(a);
+
+setAttribute('class', 'name')
+getAttribute('class', 'name')
+removeAttribute('class)
+hasAttribute('class')
+
+a.id, a.className, a.style.fontSize
+a.style.cssText = "color:blue; border:20px";
+------------------------------------------
+
+Dom Tokenlist
+--------------
+properties = length, value
+methods 
+--------
+HTMLelement.classList
+
+item()
+add()
+remove()
+replace()
+contains()
+toggle()
+value()
+------------------------------------------
+
+Css style declaration object
+--------------------------------
+properties = cssText, length, parentRule
+
+methods
+----------
+getPropertyValue(property)
+getPropertyPriority(property)
+removeProperty(property)
+setProperty(property, value, priority)
+item(idex)
+
+-------------------------------------
+
+Event Object Method
+----------------------
+
+e.target
+e.currentTarget
+e.stopPropagation()
+e.stopImmediatePropagation()
+e.preventDefault()
+
+-----------------------------------
+
+Mouse Event
+------------
+mousedown
+mouseup
+click
+dblclick
+mouseenter
+mouseleave
+mouseover
+mouseout
+mousemove
+contextmenu
+-----------------------------------
+Focus Event
+------------
+
+focus
+blur
+focusin
+focusout
+
+-----------------------------------
+Key Event
+----------
+
+keydown
+keypress
+keyup
+
+-----------------------------------
+Text Event
+-----------
+textInput
+
+-----------------------------------
+
+

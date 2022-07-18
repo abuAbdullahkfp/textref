@@ -1,0 +1,5 @@
+npx create-next-app
+
+npx run dev , yarn dev
+
+next dev -p 4000

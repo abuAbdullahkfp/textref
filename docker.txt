@@ -1,0 +1,205 @@
+docker run <image name> // for running or creating an image
+
+docker run -d <image name> // try and see executes in background you can continue writing in the same terminal
+
+docker run <image name> <command>
+
+docker ps // to list running containers
+docker ps --all / -a
+
+docker images 
+
+docker rm <container id || container name>
+docker rmi <image id>
+docker image prune
+
+docker images // list images
+docker system prune 
+docker rmi
+
+docker cp file containerid:/path // copy file to a existing container
+
+docker run = docker create <image name> + docker start -a <container id> 
+docker logs <container id> // if forgot -a while starting a container
+
+docker run --rm <container> // remove container when container stops
+
+docker system prune
+
+docker stop <container id>
+docker kill <container id>
+
+docker exec -it <container id> redis-cli
+docker exec -it <container id > sh // unix shell
+
+docker run -it <image name> <sh command in container>
+
+docker built .
+docker built -t afrid337/redis:latest .
+
+docker commit -c 'CMD ["redis-server"]' video 33
+
+docker run -p 8080:8080 <image-id>
+
+--------------------------
+docker compose
+--------------------------
+
+docker run image --- docker-compose up
+
+docker build . -----
+               --- docker-compose up --build
+docker run myimage--
+
+docker-compose up -d // try and see executes in background
+
+docker-compose down
+
+docker-compose ps
+
+
+Dockerfile.dev -- docker build -f Dockerfile.dev .
+
+volumes
+--------
+
+gitbash, mac terminal 
+docker run -p 3000:3000 -v/app/node_modules -v $(pwd):/app <image id>
+
+store volume data
+
+docker run -p 3000:3000 -v anyname:/app/filename  // maximilian 45
+
+stephen grider 67
+
+---------------------------------------------
+kubernetes
+-----------
+
+kubectl apply -f <filename> 
+
+kubectl get <objectype>
+
+kubectl describe <objectype> <objectname>
+
+kubectl delete -f <config file>
+
+kubectl set image <object_type> / <object_name> <container_name>=<new_image_name> // set image to a existing pod check maximilian ep 169 or 170
+
+kubectl exec -it [pod_name] [cmd]
+
+kubectl logs [pod_name]
+
+kubectl delete pod [pod_name]
+
+kubectl rollout restart deployment [depl-name]
+kubectl rollout status deployment [depl-name]
+kubectl rollout undo deployment [depl-name]
+
+C:\Windows\System32\drivers\etc>
+
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+
+chrome // thisisunsafe
+
+kubectl get namespace
+kubectl get service -n namespace
+
+kubectl port-forward <pod-name> port:port
+
+SERVICENAME.NAMESPACE.svc.cluster.local:
+-------------------------------------------------------------------------------------------------------
+Kafka can be accessed by consumers via port 9092 on the following DNS name from within your cluster:
+
+    kafka.default.svc.cluster.local
+
+Each Kafka broker can be accessed by producers via port 9092 on the following DNS name(s) from within your cluster:
+
+    kafka-0.kafka-headless.default.svc.cluster.local:9092
+
+To create a pod that you can use as a Kafka client run the following commands:
+
+    kubectl run kafka-client --restart='Never' --image docker.io/bitnami/kafka:3.1.0-debian-10-r68 --namespace default --command -- sleep infinity
+    kubectl exec --tty -i kafka-client --namespace default -- bash
+
+    PRODUCER:
+        kafka-console-producer.sh \
+
+            --broker-list kafka-0.kafka-headless.default.svc.cluster.local:9092 \
+            --topic test
+
+    CONSUMER:
+        kafka-console-consumer.sh \
+
+            --bootstrap-server kafka.default.svc.cluster.local:9092 \
+            --topic test \
+            --from-beginning
+
+------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

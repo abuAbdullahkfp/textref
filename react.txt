@@ -1,0 +1,125 @@
+npm i -g create-react-app
+
+npm install prop-types
+
+import PropTypes from 'prop-types';
+
+Student.propTypes = {
+  name: PropTypes.string,
+};
+
+Student.defaultProps = {
+  name: 'afrid',
+};
+
+---------------------------------------------
+
+Mounting
+---------
+
+constructor()
+static getDerivedStateFromProps()
+render()
+componentDidMount()
+
+ static getDerivedStateFromProps(props, state){
+    console.log('-------------');
+    console.log(props, state);
+    return null;
+  }
+
+---------------------------------------------
+
+Updating
+---------
+
+static getDerivedStateFromProps()
+shouldComponentUpdate()
+render()
+getSnapshotBeforeUpdate()
+componentDidMount()
+
+---------------------------------------------
+
+Unmounting
+-------------
+componentWillUnmount()
+ReactDOM.unmountComponentAtNode(document.getElementById('root'));
+---------------------------------------------
+inline style
+-------------
+
+class App extends Component{
+  render(){
+    const a = {
+      color: 'blue',
+    };
+
+    const b = {
+      backgroundColor: '#f6f6f6',
+      border: "4px solid green",
+    }
+    return (
+      <>
+      <h2 style={a}>Hello world</h2>
+      <h3 style={{...a, ...{fontSize: '50px'}, ...b}}>Hello world</h3>
+      </>
+    )
+  }
+}
+
+
+---------------------------------------------
+
+images in jsx
+--------------
+
+<img src = {process.env.PUBLIC_URL + "/pic.jpg"} alt="mypic" width="300" />
+
+image in src folder
+
+import pic from './pic.jpg';
+
+<img src = {pic} alt="mypic"/>
+
+---------------------------------------------
+bootstrap
+----------
+
+npm install bootstrap
+yarn add bootstrap
+
+import "../node_modules/bootstrap/dist/css/bootstrap.css or bootstrap.min.css";
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+---------------------------------------------
+
+django-react itegration
+------------------------
+
+
+npm init-y
+
+npm i -D webpack webpack-cli
+
+npm i -D @babel/core babel-loader @babel/preset-env  @babel/preset-react babel-plugin-transform-class-properties
+
+npm i react react-dom prop-types
+
+---------------------------------------------
+
+yarn add redux-devtools-extension
+
+composeWithDevTools()
+yarn add redux-thunk
+thunkMiddleware from redux-thunk
+applymiddleware(thunkmiddleware)
+
+---------------------------------------------
+npm install immer
+
+import {produce} from 'immer'
+
+produce(book, (copyofthebook)=>{ copyofthebook.isPublished = true; })
+---------------------------------------------
